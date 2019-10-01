@@ -7,8 +7,7 @@ import {identifierModuleUrl} from '@angular/compiler';
 
 @Component({
   selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  templateUrl: './user-profile.component.html'
 })
 export class UserProfileComponent implements OnInit {
 
@@ -35,5 +34,8 @@ export class UserProfileComponent implements OnInit {
     this.usuario = user;
     console.log(this.usuario);
     });
+  }
+  getUsuarios() {
+
   }
 }

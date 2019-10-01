@@ -5,8 +5,7 @@ import {CriancaService} from './crianca.service';
 
 @Component({
   selector: 'app-crianca',
-  templateUrl: './crianca.component.html',
-  styleUrls: ['./crianca.component.scss']
+  templateUrl: './crianca.component.html'
 })
 export class CriancaComponent implements OnInit {
 

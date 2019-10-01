@@ -13,6 +13,8 @@ export class User {
     public cidade?: string,
     public complememto?: string,
     public numero?: number,
-    public senha?: string
+    public senha?: string,
+    public telefoneCelular?: string,
+    public telefoneResidencial?: string
   ) {}
 }

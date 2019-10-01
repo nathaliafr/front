@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -18,12 +18,16 @@ import {RegisterService} from './pages/register/register.service';
 import { CriancaComponent } from './pages/crianca/crianca.component';
 import { ServiceComponent } from './service/service.component';
 import { CadastrarCriancaComponent } from './pages/crianca/cadastrar-crianca.component';
+import { DoencaComponent } from './pages/doenca/doenca.component';
+import {DoencaService} from './pages/doenca/doenca.service';
+import { QuestionarioComponent } from './pages/questionario/questionario.component';
 
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
     NgbModule,
@@ -36,7 +40,7 @@ import { CadastrarCriancaComponent } from './pages/crianca/cadastrar-crianca.com
     AuthLayoutComponent,
     ServiceComponent,
   ],
-  providers: [UserProfileService, RegisterService],
+  providers: [UserProfileService, RegisterService, DoencaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
