@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
@@ -22,10 +22,18 @@ export class UserProfileService {
   public getUsuarios(): Observable<User> {
     return this.http.get<User>(`${this.resourceUrl}/`);
   }
+
   public getUsuario(idUsuario: number): Observable<User> {
     return this.http.get<User>(`${this.resourceUrl}/` + `${idUsuario}/`);
   }
+
+  cadastrarUsuario(usuario: any): Observable<any> {
+
+    return this.http.put<any>(`${this.resourceUrl}/`, usuario);
+  }
 }
+
+
 /*
 criar para editar o usuario
 

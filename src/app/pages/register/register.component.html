@@ -28,7 +28,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                 </div>
-                <input class="form-control" placeholder="Nome" type="text">
+                <input class="form-control" placeholder="Nome" type="text" name="nome" [(ngModel)]="usuario.nome" >
               </div>
             </div>
             <div class="form-group">
@@ -36,7 +36,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" placeholder="E-mail" type="email">
+                <input class="form-control" placeholder="E-mail" type="email" name="email" [(ngModel)]="usuario.email">
               </div>
             </div>
             <div class="form-group">
@@ -44,7 +44,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-bold-right"></i></span>
                 </div>
-                <input class="form-control" placeholder="Documento" type="number">
+                <input class="form-control" placeholder="Documento" type="number"  name="documento" [(ngModel)]="usuario.documento">
               </div>
             </div>
             <div class="form-group">
@@ -52,7 +52,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                 </div>
-                <input class="form-control" placeholder="Data Nascimento" type="text">
+                <input class="form-control" placeholder="Data Nascimento" type="date"  name="dataNascimento" [(ngModel)]="usuario.dataNascimento">
               </div>
             </div>
             <div class="form-group">
@@ -60,7 +60,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-world-2"></i></span>
                 </div>
-                <input class="form-control" placeholder="Nacionalidade" type="text">
+                <input class="form-control" placeholder="Nacionalidade" type="text"  name="nacionalidade" [(ngModel)]="usuario.nacionalidade">
               </div>
             </div>
             <div class="form-group">
@@ -68,7 +68,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                 </div>
-                <input class="form-control" placeholder="Telefone Celular" type="text">
+                <input class="form-control" placeholder="Telefone Celular" type="text"  name="telefoneCelular" [(ngModel)]="usuario.telefoneCelular">
               </div>
             </div>
             <div class="form-group">
@@ -76,7 +76,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                 </div>
-                <input class="form-control" placeholder="Telefone Residencial" type="text">
+                <input class="form-control" placeholder="Telefone Residencial" type="text"   name="telefoneResidencial" [(ngModel)]="usuario.telefoneResidencial">
               </div>
             </div>
             <div class="form-group">
@@ -84,11 +84,15 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password">
+                <input class="form-control" placeholder="Password" type="password"  name="senha" [(ngModel)]="usuario.senha">
               </div>
             </div>
+
             <div class="text-center">
-              <button type="button" class="btn btn-primary mt-4">Create account</button>
+              <div class="alert alert-danger" role="alert" *ngIf="error">
+                <strong>Erro!</strong> {{error}}
+              </div>
+              <button type="button" class="btn btn-primary mt-4" (click)="cadastrarUsuario()">Cadastrar</button>
             </div>
           </form>
         </div>
