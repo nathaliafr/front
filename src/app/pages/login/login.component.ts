@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       environment.usuario = usuario;
       this.router.navigate(['/dashboard']);
      }, error => {
-      this.erro = "Login ou senha invalida!";
+      this.erro = 'Login ou senha invalida!';
       console.log(error);
     });
   }
