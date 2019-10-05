@@ -26,4 +26,10 @@ export class UserProfileService {
     return this.http.get<User>(`${this.resourceUrl}/` + `${idUsuario}/`);
   }
 }
+/*
+criar para editar o usuario
 
+@PostMapping
+public @ResponseBody Usuario editarUsuario(@RequestBody Usuario usuario) {
+  return usuarioService.editarUsuario(usuario.getIdUsuario(), usuario);
+}*/

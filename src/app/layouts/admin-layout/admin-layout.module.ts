@@ -19,6 +19,7 @@ import {CriancaComponent} from '../../pages/crianca/crianca.component';
 import {CadastrarCriancaComponent} from '../../pages/crianca/cadastrar-crianca.component';
 import {DoencaComponent} from '../../pages/doenca/doenca.component';
 import {QuestionarioComponent} from '../../pages/questionario/questionario.component';
+import {DiagnosticoComponent} from '../../pages/diagnostico/diagnostico.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -41,7 +42,8 @@ import {QuestionarioComponent} from '../../pages/questionario/questionario.compo
     CriancaComponent,
     CadastrarCriancaComponent,
     DoencaComponent,
-    QuestionarioComponent
+    QuestionarioComponent,
+    DiagnosticoComponent
   ]
 })
 

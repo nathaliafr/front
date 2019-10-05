@@ -17,14 +17,31 @@
         <div class="card-header bg-white border-0">
           <div class="row align-items-center">
             <div class="col-8">
-              <h3 class="mb-0">Escolha o questionário a ser respondido</h3>
+              <h3 class="mb-0">Responda as perguntas a seguir para gerar o seu pré diagnostico.</h3>
             </div>
           </div>
         </div>
-        <div class="card-body text-center">
-          <div *ngIf="pergunta">{{pergunta.texto}}</div>
-
+        <form #myform="ngForm" (ngSubmit)="save(myform)">
+        <div class="card-body text-justify">
+          <div class="col-xl-13 col-lg-12">
+            <div class="row">
+              <div class="col">
+                <div *ngFor="let perg of pergunta">
+                  <div class="card shadow">
+                    <div class="table-responsive text-justify" style="margin: 10px">
+                      {{perg.texto}}
+                      <div *ngFor="let resp of perg.respostas">
+                        <input type="radio" name="respostas-{{perg.idPergunta}}" value="{{perg.idPergunta}}-{{resp.idResposta}}" required> {{resp.texto}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+          <input type="submit" value="proximo">
+        </form>
       </div>
     </div>
   </div>

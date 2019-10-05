@@ -21,6 +21,7 @@ import { CadastrarCriancaComponent } from './pages/crianca/cadastrar-crianca.com
 import { DoencaComponent } from './pages/doenca/doenca.component';
 import {DoencaService} from './pages/doenca/doenca.service';
 import { QuestionarioComponent } from './pages/questionario/questionario.component';
+import { DiagnosticoComponent } from './pages/diagnostico/diagnostico.component';
 
 
 @NgModule({

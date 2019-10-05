@@ -10,6 +10,7 @@ import {CriancaComponent} from '../../pages/crianca/crianca.component';
 import {CadastrarCriancaComponent} from '../../pages/crianca/cadastrar-crianca.component';
 import {DoencaComponent} from '../../pages/doenca/doenca.component';
 import {QuestionarioComponent} from '../../pages/questionario/questionario.component';
+import {DiagnosticoComponent} from '../../pages/diagnostico/diagnostico.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',            component: DashboardComponent },
@@ -21,5 +22,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'crianca',              component: CriancaComponent},
     { path: 'doenca',               component: DoencaComponent},
     { path: 'doenca/questionario',  component: QuestionarioComponent},
+    { path: 'diagnostico',          component: DiagnosticoComponent},
     { path: 'cadastro-crianca',     component: CadastrarCriancaComponent}
 ];

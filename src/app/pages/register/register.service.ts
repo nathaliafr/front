@@ -11,3 +11,11 @@ export class RegisterService {
   searchUrl = environment.apiUrl + '/_search/usuario';
   constructor() { }
 }
+/*
+
+chamar para salvar novo usuario na tela de registro
+
+@PostMapping ("/{novoUsuario}")
+public @ResponseBody Usuario novoUsuario(@RequestBody Usuario usuario) {
+  return usuarioService.criarUsuario(usuario);
+}*/
