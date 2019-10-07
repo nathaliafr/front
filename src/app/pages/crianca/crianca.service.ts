@@ -4,8 +4,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Crianca} from './crianca.model';
 
-@Injectable ({
-providedIn: 'root'
+@Injectable({
+  providedIn: 'root'
 })
 export class CriancaService {
 
@@ -17,11 +17,21 @@ export class CriancaService {
   constructor(private http: HttpClient) {
   }
 
-  public getCriancas(): Observable<Crianca> {
-    return this.http.get<Crianca>(`${this.resourceUrl}/`);
-    console.log(this.criancas);
+  public getCriancas(idUsuario): Observable<Crianca> {
+    return this.http.get<Crianca>(`${this.resourceUrl}/buscarPorUsuario/` + `${idUsuario}/`);
   }
+
   public getCrianca(idCrianca: number): Observable<Crianca> {
     return this.http.get<Crianca>(`${this.resourceUrl}/` + `${idCrianca}/`);
   }
+
+  public deleteCrianca(idCrianca: number): Observable<Crianca> {
+    return this.http.delete<Crianca>(`${this.resourceUrl}/` + `${idCrianca}/`);
+  }
+
+  public editarCrianca(crianca: Crianca): Observable<Crianca> {
+    return this.http.put<Crianca>(`${this.resourceUrl}/`, crianca);
+  }
+
+
 }
