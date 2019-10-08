@@ -1,3 +1,86 @@
-<p>
-  diagnostico works!
-</p>
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+     style="min-height: 600px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        <div *ngIf="usuario">
+          <h1 class="display-2 text-white">{{usuario.nome | titlecase}}</h1>
+          <p class="text-white mt-0 mb-7">Esssa é a página com as informações de seus dependentes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-12 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-10">
+              <div *ngIf="usuario">
+                <h3 class="mb-0">{{usuario.nome |titlecase}}</h3>
+              </div>
+            </div>
+            <div class="row">
+
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h6 class="heading-small text-muted mb-4">Escolha um dependente dependentes </h6>
+          <select [(ngModel)]="idCrianca"  (click)="buscarDiagnosticosDeUmaCrianca()" >
+            <option *ngFor="let criancaSelect of criancas"  value="{{criancaSelect.idCrianca}}">{{criancaSelect.nome}}</option>
+           </select>
+          <div class="row">
+            <div class="table-responsive">
+              <table *ngIf="listaQuestionario" class="table align-items-center table-flush">
+                <thead class="thead-light">
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Data</th>
+                  <th scope="col">Analise</th>
+                 </tr>
+                </thead>
+                <tbody>
+
+                <tr *ngFor="let questionario of listaQuestionario">
+                  <th scope="row">
+                    {{questionario.idQuestionario}}
+                  </th>
+                  <td>
+                    {{questionario.data}}
+                  </td>
+                 <td>
+                    <button type="button"  (click)="buscarGraficoDeDiagnotico(questionario);"    class="btn btn-primary"   >
+                      <span aria-hidden="true">Ver Resultado</span>
+                    </button>
+
+                  </td>
+
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Chart -->
+          <div class="chart">
+            <canvas id="chart-orders" class="chart-canvas"></canvas>
+          </div>
+        </div>
+        <hr class="my-4"/>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

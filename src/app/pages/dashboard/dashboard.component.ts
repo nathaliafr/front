@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
 
 
     const ordersChart = new Chart(chartOrders, {
-      type: 'bar',
+      type: 'pie',
       options: chartExample2.options,
       data: chartExample2.data
     });
