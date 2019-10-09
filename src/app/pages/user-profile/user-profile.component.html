@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-lg-7 col-md-10">
         <div *ngIf="usuario">
-        <h1 class="display-2 text-white">Hello {{usuario.nome | titlecase}}</h1>
+        <h1 class="display-2 text-white">Olá {{usuario.nome | titlecase}}</h1>
         <p class="text-white mt-0 mb-7">Esssa é a página com as suas informações.</p>
         </div>
       </div>
@@ -15,24 +15,7 @@
 </div>
 <div class="container-fluid mt--7">
   <div class="row">
-    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-      <div class="card card-profile shadow">
-        <div class="card-body pt-0 pt-md-4">
-          <div class="text-center">
-            <div *ngIf="usuario">
-              <h3>
-                {{usuario.nome | titlecase}}
-                <span class="font-weight-light">, 27</span>
-              </h3>
-              <div class="h5 font-weight-300">
-                <i class="ni location_pin mr-2"></i>{{usuario.cidade | titlecase}}, {{usuario.uf | uppercase}}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-8 order-xl-1">
+    <div class="col-xl-12 order-xl-1">
       <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
           <div class="row align-items-center">
@@ -146,6 +129,9 @@
                     <input type="text" id="bairro" class="form-control" placeholder="Bairro" [(ngModel)]="usuario.bairro">
                   </div>
                 </div>
+              </div>
+              <div class="text-left">
+                <button type="button" class="btn btn-primary my-4" (click)=" ">Salvar</button>
               </div>
             </div>
           <!--</form>-->
