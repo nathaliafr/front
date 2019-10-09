@@ -71,6 +71,12 @@
           </div>
         </div>
         <div class="card-body">
+          <div *ngIf="grafico">
+            <div size="5">Através das análises realizadas foi virificado a probabilidade de vc tem:</div>
+            <div *ngFor="let lista of grafico.graficoDados"> {{lista.porcentagem}}% de {{lista.doenca.nome}};</div>
+            <div>Esse sistema não retira a recomendação de procurar ajuda médica.</div>
+            <div>Para a realização de um diagnóstico preciso é necessário que procure o especialista.</div>
+          </div>
           <!-- Chart -->
           <div class="chart">
             <canvas id="chart-orders" class="chart-canvas"></canvas>

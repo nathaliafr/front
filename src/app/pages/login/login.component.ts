@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.loginService.autenticarUsuario(this.email, this.senha).subscribe(usuario => {
       environment.usuario = usuario;
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/about']);
      }, error => {
       this.erro = 'Login ou senha invalida!';
       console.log(error);

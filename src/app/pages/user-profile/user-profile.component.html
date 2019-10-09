@@ -53,7 +53,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Data de Nascimento</label>
-                    <input type="text" id="data-nascimento" class="form-control" placeholder="Data de Nascimento" [(ngModel)]="usuario.dataNascimento">
+                    <input type="date" id="data-nascimento" class="form-control" placeholder="Data de Nascimento" [(ngModel)]="usuario.dataNascimento" dataformatas="dd/mm/yyyy">
                   </div>
                 </div>
               </div>
@@ -130,8 +130,8 @@
                   </div>
                 </div>
               </div>
-              <div class="text-left">
-                <button type="button" class="btn btn-primary my-4" (click)=" ">Salvar</button>
+              <div class="text-right">
+                <button type="button" class="btn btn-primary my-4" >Salvar</button>
               </div>
             </div>
           <!--</form>-->
