@@ -28,6 +28,7 @@ export class DiagnosticoComponent implements OnInit {
     dataNascimento: '',
     nacionalidade: ''
   };
+  mensagem: string;
   crianca: Crianca;
   criancas: any;
   usuario: any;
@@ -42,13 +43,19 @@ export class DiagnosticoComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private modalService: NgbModal,
+              private routerParam: ActivatedRoute,
               private questionarioService: QuestionarioService) {
+
+    this.idCrianca = this.routerParam.snapshot.queryParams['idCrianca'];
 
     if (!environment.usuario && !this.usuario) {
       this.router.navigate(['/login']);
     } else {
       this.usuario = environment.usuario;
       this.getListaDependente();
+      if (this.idCrianca) {
+        this.buscarDiagnosticosDeUmaCrianca();
+      }
     }
 
 
@@ -105,17 +112,15 @@ export class DiagnosticoComponent implements OnInit {
     console.log(this.idCrianca);
     this.questionarioService.getQuestionariosPorIdCrianca(this.idCrianca).subscribe(listQuestionario => {
       this.listaQuestionario = listQuestionario;
-      console.log(listQuestionario);
 
     });
 
   }
 
-  buscarGraficoDeDiagnotico(questionario) {
+  buscarGraficoDeDiagnotico(questionario, resultaClicado) {
     this.questionarioService.getGrafico(questionario.idQuestionario).subscribe(grafico => {
       this.grafico = grafico;
-
-      console.log(grafico);
+      this.mensagem = 'Resultado do diagnostico: ' + resultaClicado;
 
       var data = {
         labels: this.grafico.labels,

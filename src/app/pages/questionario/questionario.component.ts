@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Pergunta} from './pergunta.model';
 import {QuestionarioService} from './questionario.service';
 import {Resposta} from './resposta.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-questionario',
@@ -10,23 +11,30 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class QuestionarioComponent implements OnInit {
 
-  pergunta: Pergunta;
+  pergunta: any;
   respostas: Resposta;
   idCrianca: any;
   idDoenca: any;
+  list: any;
+  usuario: any;
 
   constructor(private questionarioService: QuestionarioService,
+              private router: Router,
               private routerParam: ActivatedRoute) {
 
-    this.idCrianca = this.routerParam.snapshot.queryParams['idCrianca'];
-    this.idDoenca = this.routerParam.snapshot.queryParams['idDoenca'];
+    if (!environment.usuario && !this.usuario) {
+      this.router.navigate(['/login']);
+    } else {
+      this.usuario = environment.usuario;
+      this.idCrianca = this.routerParam.snapshot.queryParams['idCrianca'];
+      this.idDoenca = this.routerParam.snapshot.queryParams['idDoenca'];
+    }
+
 
   }
 
   ngOnInit() {
     this.getQuestionario();
-   // this.getRespostas();
-    //this.getResposta();
   }
 
   getPerguntasDoenca(): void {
@@ -34,7 +42,6 @@ export class QuestionarioComponent implements OnInit {
     console.log(id);
     this.questionarioService.getPerguntasDoenca(id).subscribe(perguntas => {
       this.pergunta = perguntas;
-      console.log(this.pergunta);
     });
   }
 
@@ -67,5 +74,28 @@ export class QuestionarioComponent implements OnInit {
       console.log(this.respostas);
     });
   }
-}
 
+  responderTudo(idCrianca) {
+
+    this.list = {
+      criancaId: this.idCrianca,
+      responderPerguntaRequestList: []
+    };
+    for (var i = 0; i < this.pergunta.length; i++) {
+      if (this.pergunta[i].respondido) {
+        var splits = this.pergunta[i].respondido.split('-');
+        this.list.responderPerguntaRequestList.push({
+          idPergunta: splits[0],
+          idResposta: splits[1]
+        });
+      }
+    }
+    console.log(this.list);
+    this.questionarioService.responderQuestao(this.list).subscribe(grafico => {
+      this.router.navigate(['/diagnostico'], {queryParams: {idCrianca: this.idCrianca}});
+    }, error => {
+      console.error('erro' + error);
+    });
+
+  }
+}
