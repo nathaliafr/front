@@ -28,7 +28,7 @@ export class UserProfileComponent implements OnInit {
     this.getUsuario();
   }
   getUsuario(): void {
-    const id = 1; /*+this.route.snapshot.paramMap.get('id');*/
+    const id = 3; /*+this.route.snapshot.paramMap.get('id');*/
     console.log(id);
     this.userProfileService.getUsuario(id).subscribe(user => {
     this.usuario = user;
