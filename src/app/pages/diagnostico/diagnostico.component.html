@@ -54,8 +54,8 @@
                   <td>
                     {{questionario.data}}
                   </td>
-                 <td>
-                    <button type="button"  (click)="buscarGraficoDeDiagnotico(questionario);"    class="btn btn-primary"   >
+                  <td>
+                    <button type="button"  (click)="buscarGraficoDeDiagnotico(questionario,questionario.data);"    class="btn btn-primary"   >
                       <span aria-hidden="true">Ver Resultado</span>
                     </button>
 
@@ -70,6 +70,7 @@
 
           </div>
         </div>
+        <h3 style="text-align: center" *ngIf="mensagem"> {{mensagem}}</h3>
         <div class="card-body">
           <div *ngIf="grafico">
             <div size="5">Através das análises realizadas foi virificado a probabilidade de vc tem:</div>

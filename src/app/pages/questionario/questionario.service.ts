@@ -6,33 +6,44 @@ import {Pergunta} from './pergunta.model';
 import {Resposta} from './resposta.model';
 import {User} from '../user-profile/user.model';
 
-@Injectable ({
+@Injectable({
   providedIn: 'root'
 })
 export class QuestionarioService {
-   resourceNamePergunta = 'pergunta';
-   resourceUrlPergunta = environment.apiUrl + this.resourceNamePergunta;
-   searchUrl = environment.apiUrl + '/_search/doenca';
-   resourceNamePerguntaDoenca = 'listaDePerguntaPorDoenca';
-   resourceNameResposta = 'resposta';
-   resourceUrlResposta = environment.apiUrl + this.resourceNameResposta;
-   resposta: Object[] = [];
-   pergunta: Object[] = [];
+  resourceNamePergunta = 'pergunta';
+  resourceUrlPergunta = environment.apiUrl + this.resourceNamePergunta;
+  searchUrl = environment.apiUrl + '/_search/doenca';
+  resourceNamePerguntaDoenca = 'listaDePerguntaPorDoenca';
+  resourceNameResposta = 'resposta';
+  questionanrioNameResposta = 'questionario';
 
-   constructor(private http: HttpClient) {
-   }
+  resourceUrlResposta = environment.apiUrl + this.resourceNameResposta;
+  resourceUrlQuestionario = environment.apiUrl + this.questionanrioNameResposta;
+  resposta: Object[] = [];
+  pergunta: Object[] = [];
+
+  constructor(private http: HttpClient) {
+  }
 
   public getQuestionario(): Observable<Pergunta> {
     return this.http.get<Pergunta>(`${this.resourceUrlPergunta}/`);
   }
+
   public getPerguntasDoenca(idDoenca: number): Observable<Pergunta> {
     return this.http.get<Pergunta>(`${this.resourceUrlPergunta}/` + `${this.resourceNamePerguntaDoenca}/` + `${idDoenca}`);
   }
+
   public getRespostas(): Observable<Resposta> {
     return this.http.get<Resposta>(`${this.resourceUrlResposta}/`);
   }
+
   public getResposta(idResposta: number): Observable<Resposta> {
     return this.http.get<Resposta>(`${this.resourceUrlResposta}/` + `${idResposta}/`);
   }
+
+  public responderQuestao(listaDeResposta: any): Observable<Resposta> {
+    return this.http.post(`${this.resourceUrlQuestionario}/responderPergunta`, listaDeResposta);
+  }
+
 }
 
