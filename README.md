@@ -92,18 +92,12 @@ argon-dashboard-angular
 │   │   │   ├── components.module.ts
 │   │   │   ├── footer
 │   │   │   │   ├── footer.component.html
-│   │   │   │   ├── footer.component.scss
-│   │   │   │   ├── footer.component.spec.ts
 │   │   │   │   └── footer.component.ts
 │   │   │   ├── navbar
 │   │   │   │   ├── navbar.component.html
-│   │   │   │   ├── navbar.component.scss
-│   │   │   │   ├── navbar.component.spec.ts
 │   │   │   │   └── navbar.component.ts
 │   │   │   └── sidebar
 │   │   │       ├── sidebar.component.html
-│   │   │       ├── sidebar.component.scss
-│   │   │       ├── sidebar.component.spec.ts
 │   │   │       └── sidebar.component.ts
 │   │   ├── layouts
 │   │   │   ├── admin-layout

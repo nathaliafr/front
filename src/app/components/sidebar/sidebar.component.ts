@@ -10,22 +10,16 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
 
   { path: '/about', title: 'Sobre',  icon: 'ni-planet text-blue', class: '' },
-  { path: '/user-profile', title: 'Usuário',  icon:'ni-single-02 text-yellow', class: '' },
+  { path: '/user-profile', title: 'Usuário',  icon: 'ni-single-02 text-yellow', class: '' },
   { path: '/crianca', title: 'Dependentes', icon: 'ni-bullet-list-67 text-yellow', class: ''},
   { path: '/diagnostico', title: 'Diagnóstico', icon: 'ni-collection text-red', class: ''},
   { path: '/duvida', title: 'Duvida', icon: 'ni-chat-round text-red', class: ''},
-  { path: '/login', title: 'Logout',  icon:'ni-key-25 text-info', class: '' },
-//    { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-//    { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
-//    { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
-//    { path: '/doenca', title: 'Questionario', icon: 'ni-collection text-red', class: ''},
-//    { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' }
+  { path: '/login', title: 'Logout',  icon: 'ni-key-25 text-info', class: '' }
 ];
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {
 

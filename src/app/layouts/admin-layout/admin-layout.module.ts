@@ -2,25 +2,21 @@ import { NgModule } from '@angular/core';
 import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
-import { IconsComponent } from '../../pages/icons/icons.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
-import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AboutComponent} from '../../pages/about/about.component';
 import {DuvidaComponent} from '../../pages/duvida/duvida.component';
-import {AppComponent} from '../../app.component';
 import {CriancaComponent} from '../../pages/crianca/crianca.component';
 import {CadastrarCriancaComponent} from '../../pages/crianca/cadastrar-crianca.component';
 import {DoencaComponent} from '../../pages/doenca/doenca.component';
 import {QuestionarioComponent} from '../../pages/questionario/questionario.component';
 import {DiagnosticoComponent} from '../../pages/diagnostico/diagnostico.component';
-// import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -35,8 +31,6 @@ import {DiagnosticoComponent} from '../../pages/diagnostico/diagnostico.componen
   declarations: [
     DashboardComponent,
     UserProfileComponent,
-    TablesComponent,
-    IconsComponent,
     AboutComponent,
     DuvidaComponent,
     CriancaComponent,
