@@ -21,4 +21,12 @@ export class QuestionarioService {
   public getGrafico(idQuestionario): Observable<any> {
     return this.http.get<any>(`${this.resourceUrl}/grafico/` + `${idQuestionario}/`);
   }
+
+  public salvarRespostaFinalDoDiagnostico(idDoenca, idQuestionario) {
+    return this.http.post(`${this.resourceUrl}/respostaDoEscialista/`, {
+      idDoenca: idDoenca,
+      idQuestionario: idQuestionario
+    });
+  }
+
 }

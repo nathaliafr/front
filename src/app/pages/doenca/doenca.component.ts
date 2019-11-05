@@ -34,8 +34,7 @@ export class DoencaComponent implements OnInit {
   getDoencas(): void {
     this.doencaService.getDoencas().subscribe(doenca => {
       this.doencas = doenca;
-      console.log(this.doencas);
-    });
+     });
   }
 
   selecinarTipoDoenca() {

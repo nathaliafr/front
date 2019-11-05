@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Crianca} from '../crianca/crianca.model';
 import {CriancaService} from '../crianca/crianca.service';
 import {QuestionarioService} from '../diagnostico/questionario.service';
+import {DoencaService} from '../doenca/doenca.service';
+
 import Chart from 'chart.js';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -14,13 +16,14 @@ import {
   chartExample2
 } from '../../variables/charts';
 import {forEach} from '@angular/router/src/utils/collection';
+import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-diagnostico',
   templateUrl: './diagnostico.component.html'
 })
 export class DiagnosticoComponent implements OnInit {
-
+  idDoenca: any;
   listaQuestionario: any;
   criancaClick: {
     nome: '',
@@ -38,13 +41,15 @@ export class DiagnosticoComponent implements OnInit {
   idCrianca: any;
   public datasets: any;
   public data: any;
+  doencas: any;
 
   constructor(private criancaService: CriancaService,
               private route: ActivatedRoute,
               private router: Router,
               private modalService: NgbModal,
               private routerParam: ActivatedRoute,
-              private questionarioService: QuestionarioService) {
+              private questionarioService: QuestionarioService,
+              private doencaService: DoencaService) {
 
     this.idCrianca = this.routerParam.snapshot.queryParams['idCrianca'];
 
@@ -53,6 +58,7 @@ export class DiagnosticoComponent implements OnInit {
     } else {
       this.usuario = environment.usuario;
       this.getListaDependente();
+      this.getDoencas();
       if (this.idCrianca) {
         this.buscarDiagnosticosDeUmaCrianca();
       }
@@ -61,11 +67,25 @@ export class DiagnosticoComponent implements OnInit {
 
   }
 
+  getDoencas(): void {
+    this.doencaService.getDoencasTodas().subscribe(doenca => {
+      this.doencas = doenca;
+    });
+  }
 
   getListaDependente() {
-    this.criancaService.getCriancas(this.usuario.idUsuario).subscribe(criancas => {
-      this.criancas = criancas;
-    });
+
+    if (this.usuario.tipo == 'USUARIO') {
+      console.log('usuario');
+      this.criancaService.getCriancas(this.usuario.idUsuario).subscribe(criancas => {
+        this.criancas = criancas;
+      });
+    } else {
+      console.log('especilista');
+      this.criancaService.getTodasCriancas().subscribe(criancas => {
+        this.criancas = criancas;
+      });
+    }
   }
 
   ngOnInit() {
@@ -79,6 +99,17 @@ export class DiagnosticoComponent implements OnInit {
     });
   }
 
+
+  salvarRespostaDoEspecialista(idQuestionario) {
+    if (this.idDoenca) {
+      this.questionarioService.salvarRespostaFinalDoDiagnostico(this.idDoenca, idQuestionario).subscribe(listQuestionario => {
+        this.buscarDiagnosticosDeUmaCrianca();
+      }, error => {
+        this.buscarDiagnosticosDeUmaCrianca();
+
+      });
+    }
+  }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

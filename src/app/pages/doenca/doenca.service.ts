@@ -18,8 +18,12 @@ export class DoencaService {
   }
   public getDoencas(): Observable<Doenca> {
     return this.http.get<Doenca>(`${this.resourceUrl}/`);
-    console.log(this.doenca);
+   }
+
+  public getDoencasTodas(): Observable<Doenca> {
+    return this.http.get<Doenca>(`${this.resourceUrl}/todas`);
   }
+
 /*  public getDoenca(idDoenca: number): Observable<Doenca> {
     return this.http.get<Doenca>(`${this.resourceUrl}/` + `${idDoenca}/`);
   }*/

@@ -21,6 +21,10 @@ export class CriancaService {
     return this.http.get<Crianca>(`${this.resourceUrl}/buscarPorUsuario/` + `${idUsuario}/`);
   }
 
+  public getTodasCriancas(): Observable<Crianca> {
+    return this.http.get<Crianca>(`${this.resourceUrl}/`);
+  }
+
   public getCrianca(idCrianca: number): Observable<Crianca> {
     return this.http.get<Crianca>(`${this.resourceUrl}/` + `${idCrianca}/`);
   }
